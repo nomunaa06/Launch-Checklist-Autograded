@@ -112,9 +112,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
  async function myFetch() {
     let planetsReturned;
-    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-    let jsonData = await planetsReturned.json();         
-    return jsonData;
+   
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
+       let  json=response.json()
+        return json;
+    });
+    // let jsonData = await planetsReturned.json();      
+
+    return planetsReturned;
 }
 
  function pickPlanet(planets) {
